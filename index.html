@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swarm Simulation</title>
+    <style>
+        html * {
+            font-weight: bold;
+            font-size: 15px;
+            font-family: Calibri, serif;
+        }
+
+        canvas {
+            position: absolute;
+            left: 5px;
+            top: 100px;
+            border: 1px solid #000000;
+        }
+
+        #map-main-layer {
+            z-index: 2;
+        }
+
+        #map-background-layer {
+            z-index: 1;
+        }
+
+        #player-main-layer {
+            z-index: 1;
+            top: 99px;
+            left: 510px;
+        }
+
+        #player-path-layer {
+            z-index: 2;
+            top: 99px;
+            left: 510px;
+        }
+    </style>
+</head>
+<body>
+<p id="fps" style="position: absolute; left: 30px">fps</p>
+<p id="player-pos" style="position: absolute; left: 30px; top: 30px">position</p>
+<p id="player-actual-pos" style="position: absolute; left: 200px; top: 30px">position</p>
+<p id="player-estimate" style="position: absolute; left: 30px; top: 60px">direction</p>
+<div id="stage">
+    <canvas id="map-background-layer" width="500" height="500"></canvas>
+    <canvas id="map-main-layer" width="500" height="500"></canvas>
+
+    <canvas id="player-path-layer" width="502" height="502"></canvas>
+    <canvas id="player-main-layer" width="502" height="502"></canvas>
+</div>
+<script type="module" src="dist/bundle.js"></script>
+<!--<script type="module" src="build"></script>-->
+<!--<script type="module" src="build/player/pathfinder/a-star"></script>-->
+</body>
+</html>
