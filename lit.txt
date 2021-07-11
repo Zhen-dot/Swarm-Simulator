@@ -1,6 +1,0 @@
-Robot navigation simulation for indoor environment with obstacles
-
-Data structure
-SLAM
-Path planning
-Obstacle avoidance

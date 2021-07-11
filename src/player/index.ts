@@ -83,9 +83,6 @@ class Player {
 
         const { x, y } = this.path.pop()!;
 
-        this.x = x;
-        this.y = y;
-
         const obstacles: { x: number; y: number }[] = [];
 
         const { rays, memory } = this;
@@ -93,7 +90,7 @@ class Player {
         // Cast lidar
         for (let i = 0, n = rays.length; i < n; i++) {
             const ray = rays[i];
-            const [collide, point, goal] = ray.update(this.x + sx, this.y + sy);
+            const [collide, point, goal] = ray.update(x + sx, y + sy);
 
             // Set goal if found
             if (goal) {
@@ -107,7 +104,8 @@ class Player {
                 const { dir } = ray;
                 const dx = Math.round(cos(dir) - sin(dir));
                 const dy = Math.round(sin(dir) + cos(dir));
-                this.path = [{ x: x + dx, y: y + dy }];
+
+                this.path = [{ x: this.x - 3 * dx, y: this.y - 3 * dy }];
 
                 return this.update(sx, sy);
             }
@@ -132,6 +130,9 @@ class Player {
                 if (memory.get(y - sy, x - sx) !== 1) memory.set(y - sy, x - sx, 1);
             }
         }
+
+        this.x = x;
+        this.y = y;
 
         // const { x = this.x, y = this.y } = pathFinder.update();
         // this.dx = Math.round((x - this.x) * cos(this.dir) - (y - this.y) * sin(this.dir));
